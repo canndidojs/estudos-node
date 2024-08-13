@@ -1,0 +1,25 @@
+POST http://localhost:3000/cars
+Content-Type: application/json
+
+{
+    "title": "Car 01",
+    "description": "car is for sale",
+    "mileage": "100.000km"
+}
+
+
+###
+
+GET http://localhost:3000/cars
+
+
+### 
+PUT http://localhost:3000/cars/
+Content-Type: application/json
+
+{
+    "title": "Car 01",
+    "description": "car is for sale",
+    "mileage": "100.000km"
+}
+ 
