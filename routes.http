@@ -2,7 +2,7 @@ POST http://localhost:3000/cars
 Content-Type: application/json
 
 {
-    "title": "Car 01",
+    "title": "Car ford",
     "description": "car is for sale",
     "mileage": "100.000km"
 }
@@ -10,16 +10,19 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/cars
+GET http://localhost:3000/cars?search=ford
 
 
 ### 
-PUT http://localhost:3000/cars/
+PUT http://localhost:3000/cars/2eaf8cba-73a7-43b7-938f-818a1b64f5e6
 Content-Type: application/json
 
 {
     "title": "Car 01",
-    "description": "car is for sale",
+    "description": "car is not for sale",
     "mileage": "100.000km"
 }
  
+
+### 
+DELETE http://localhost:3000/cars/cefe6b29-5752-43fc-a93a-990120c8b7bb

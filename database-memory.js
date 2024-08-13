@@ -1,32 +1,39 @@
 import { randomUUID } from "node:crypto"
 
 export class databaseMemory {
-    #cars = new Map()
+  #cars = new Map()
 
-    list() {
-        return Array.from(this.#cars.entries()).map((videoArray) => {
-            const id = videoArray[0]
-            const data = videoArray[1]
+  list(search) {
+    return Array.from(this.#cars.entries()).map((videoArray) => {
+      const id = videoArray[0]
+      const data = videoArray[1];
 
-            return {
-                id,
-                ...data,
-            }
-        })
-        // array.from converte estrutura de dados que não é array, para um array
-    }
+      return {
+        id,
+        ...data,
+      };
+    })
+    .filter(car => {
+        if (search) {
+            return car.title.includes(search)
+        }
 
-    create(car) {
-        const carId = randomUUID() // universal unique id - uuid
+        return true
+    })
+    // array.from converte estrutura de dados que não é array, para um array
+  }
 
-        this.#cars.set(carId, car)
-    }
+  create(car) {
+    const carId = randomUUID() // universal unique id - uuid
 
-    update(id, car) {
-        this.#cars.set(id, car)
-    }
+    this.#cars.set(carId, car)
+  }
 
-    delete(id) {
-        this.#cars.delete(id)
-    }
-} 
+  update(id, car) {
+    this.#cars.set(id, car)
+  }
+
+  delete(id) {
+    this.#cars.delete(id)
+  }
+}

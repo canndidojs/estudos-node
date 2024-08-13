@@ -1,14 +1,14 @@
-import { fastify } from "fastify";
-import { databaseMemory } from "./database-memory.js";
+import { fastify } from "fastify"
+import { DatabasePostgres } from "./database-postgres.js"
 
 const server = fastify()
 
-const database = new databaseMemory()
+const database = new DatabasePostgres()
 
-server.post('/cars', (request, reply) => {
+server.post('/cars', async (request, reply) => {
     const { title, description, mileage } = request.body
 
-    database.create({
+    await database.create({
         title,
         description,
         mileage
@@ -17,8 +17,11 @@ server.post('/cars', (request, reply) => {
     return reply.status(201).send()
 })
 
-server.get('/cars', () => {
-    const cars = database.list()
+ server.get('/cars', async (request) => {
+    const search = request.query.search
+    console.log(search)
+
+    const cars = await database.list(search)
 
     return cars
 })
@@ -37,8 +40,12 @@ server.put('/cars/:id', (request, reply) => {
     return reply.status(204).send()
 })
 
-server.delete('/cars/:id', () => {
-    return 'gm/chevrolet cars'
+server.delete('/cars/:id', (request, reply) => {
+    const carId = request.params.id
+    
+    database.delete(carId)
+
+    return reply.status(204).send
 })
 
 
