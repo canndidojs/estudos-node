@@ -1,4 +1,4 @@
-POST http://localhost:3000/cars
+POST https://estudos-node.onrender.com/cars
 Content-Type: application/json
 
 {
@@ -10,19 +10,19 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/cars
+GET https://estudos-node.onrender.com/cars
 
 
 ### 
-PUT http://localhost:3000/cars/0fefb193-242c-46e7-af60-09c7aed3f085
+PUT https://estudos-node.onrender.com/cars/1a1a8c43-eb4d-4074-acd1-b0c17b13fede
 Content-Type: application/json
 
 {
     "title": "Car 01",
-    "description": "car is not for sale",
+    "description": "car saled",
     "mileage": "100000"
 }
  
 
 ### 
-DELETE http://localhost:3000/cars/5bb6cd0d-d351-426c-91d6-925b1bd7630e
+DELETE https://estudos-node.onrender.com/cars/1a1a8c43-eb4d-4074-acd1-b0c17b13fede
