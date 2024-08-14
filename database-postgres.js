@@ -6,7 +6,7 @@ export class DatabasePostgres {
     let cars
 
     if (search) {
-        cars = await sql`select * from cars where title ilike "%${search}%"`
+        cars = await sql`select * from cars where title ilike ${'%' + search + '%'}`
     } else {
         cars = await sql`select * from cars`
     }
@@ -18,12 +18,17 @@ export class DatabasePostgres {
     const carId = randomUUID()
     const { title, description, mileage } = car
 
-    await sql`insert into cars (id, title, description, mileage) VALEUS (${carId}, ${title}, ${description}, ${mileage})`
+    await sql`insert into cars (id, title, description, mileage) VALUES (${carId}, ${title}, ${description}, ${mileage})`
   }
 
-  update(id, car) {
+  async update(id, car) {
+    const { title, description, mileage } = car
+
+    await sql`update cars set title = ${title}, description = ${description}, mileage = ${mileage} WHERE id = ${id}`
+
   }
 
-  delete(id) {
+  async delete(id) {
+    await sql`delete from cars where id = ${id}`
   }
 }

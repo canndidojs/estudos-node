@@ -4,25 +4,25 @@ Content-Type: application/json
 {
     "title": "Car ford",
     "description": "car is for sale",
-    "mileage": "100.000km"
+    "mileage": "100000"
 }
 
 
 ###
 
-GET http://localhost:3000/cars?search=ford
+GET http://localhost:3000/cars
 
 
 ### 
-PUT http://localhost:3000/cars/2eaf8cba-73a7-43b7-938f-818a1b64f5e6
+PUT http://localhost:3000/cars/0fefb193-242c-46e7-af60-09c7aed3f085
 Content-Type: application/json
 
 {
     "title": "Car 01",
     "description": "car is not for sale",
-    "mileage": "100.000km"
+    "mileage": "100000"
 }
  
 
 ### 
-DELETE http://localhost:3000/cars/cefe6b29-5752-43fc-a93a-990120c8b7bb
+DELETE http://localhost:3000/cars/5bb6cd0d-d351-426c-91d6-925b1bd7630e
