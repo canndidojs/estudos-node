@@ -49,5 +49,5 @@ server.delete('/cars/:id', async (request, reply) => {
 
 
 server.listen({
-    port: 3000,
+    port: process.env.PORT ?? 3000,
 })
